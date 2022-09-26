@@ -10,7 +10,7 @@ import Loading from "../components/common/Loading";
 function Home() {
   const getPokemon = async (pageParam: number) => {
     const res = await axios.get(
-      `https://pokeapi.co/api/v2/pokemon/?offset=${pageParam}&limit=30`
+      `https://pokeapi.co/api/v2/pokemon/?offset=${pageParam}&limit=20`
     );
     return {
       results: res.data.results,
@@ -24,7 +24,7 @@ function Home() {
     ({ pageParam = 0 }) => getPokemon(pageParam),
     {
       getNextPageParam: (lastPage) => {
-        if (lastPage.next) return lastPage.nextPage + 30;
+        if (lastPage.next) return lastPage.nextPage + 20;
         return undefined;
       },
     }
@@ -38,7 +38,7 @@ function Home() {
       return;
     }
     fetchNextPage();
-  }, [inView]);
+  }, [fetchNextPage, inView, status]);
 
   return (
     <>

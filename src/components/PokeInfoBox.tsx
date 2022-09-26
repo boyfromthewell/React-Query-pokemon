@@ -33,7 +33,7 @@ const MainContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 95vh;
+  height: 75vh;
 `;
 const ImageContainer = styled.div`
   display: flex;
@@ -42,7 +42,7 @@ const ImageContainer = styled.div`
   max-width: 750px;
   border: 1px solid gray;
   border-radius: 12px;
-  background-color: lightgray;
+  background-color: whitesmoke;
   box-shadow: 5px 5px 5px gray;
 `;
 const MainImage = styled.img`
@@ -65,12 +65,15 @@ const InfoContainer = styled.div`
   border: 1px solid gray;
   border-radius: 12px;
   box-shadow: 5px 5px 5px gray;
+  background-color: whitesmoke;
   margin-top: 3vh;
   padding: 20px 0 20px 0;
 `;
 
 const Name = styled.h1`
+  font-size: 40px;
   margin-bottom: 3px;
+  margin-top: 0;
   text-decoration: underline;
   margin-left: 10px;
 `;
