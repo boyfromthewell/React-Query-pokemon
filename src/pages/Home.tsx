@@ -4,6 +4,8 @@ import axios from "axios";
 import { useInfiniteQuery } from "react-query";
 import { useInView } from "react-intersection-observer";
 import PokemonItem from "../components/PokemonItem";
+import styled from "styled-components";
+import Loading from "../components/common/Loading";
 
 function Home() {
   const getPokemon = async (pageParam: number) => {
@@ -31,22 +33,16 @@ function Home() {
     if (!inView) {
       return;
     }
+    if (status === "error") {
+      alert("예상치 못한 오류가 발생했습니다.");
+      return;
+    }
     fetchNextPage();
   }, [inView]);
 
-  console.log(status, isFetchingNextPage);
   return (
     <>
-      <div
-        style={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "center",
-          maxWidth: "1200px",
-          width: "100%",
-          margin: "0 auto",
-        }}
-      >
+      <MainContainer>
         {data?.pages.map((page, page_idx) => (
           <React.Fragment key={page_idx}>
             {page.results.map((item: Pokemon, idx: any) => (
@@ -56,16 +52,29 @@ function Home() {
             ))}
           </React.Fragment>
         ))}
-      </div>
+      </MainContainer>
       {isFetchingNextPage ? (
-        <h3>loading...</h3>
+        <Loading />
       ) : (
-        <div style={{ display: "block" }} className="ref" ref={ref}>
+        <div
+          style={{ display: "block", visibility: "hidden" }}
+          className="ref"
+          ref={ref}
+        >
           im ref
         </div>
       )}
     </>
   );
 }
+
+const MainContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+`;
 
 export default Home;
