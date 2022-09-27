@@ -14,6 +14,7 @@ const MainBox = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  height: 80vh;
 `;
 const LoadingIMG = styled.img`
   width: 10%;

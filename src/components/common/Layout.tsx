@@ -17,10 +17,11 @@ function Layout() {
 
 const Header = styled.header`
   display: flex;
-  background-color: #ffcb06;
+  background-color: rgba(255, 203, 6, 0.8);
   justify-content: center;
   height: 150px;
   margin-bottom: 5vh;
+  padding: 10px 0 10px 0;
 `;
 
 const LogoImg = styled.img``;
