@@ -1,20 +1,24 @@
 import React from "react";
 import styled from "styled-components";
 import Pica from "../../images/pica.gif";
-function Loading() {
+
+interface LoadingProps {
+  status: string;
+}
+function Loading({ status }: LoadingProps) {
   return (
-    <MainBox>
+    <MainBox status={status}>
       <LoadingIMG src={Pica} alt="loading" />
       <LoadingSpan>Loading...</LoadingSpan>
     </MainBox>
   );
 }
-const MainBox = styled.div`
+const MainBox = styled.div<{ status: string }>`
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 80vh;
+  height: ${(props) => (props.status === "home" ? "" : "70vh")};
 `;
 const LoadingIMG = styled.img`
   width: 10%;

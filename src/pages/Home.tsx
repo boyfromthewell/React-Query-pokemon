@@ -54,7 +54,7 @@ function Home() {
         ))}
       </MainContainer>
       {isFetchingNextPage ? (
-        <Loading />
+        <Loading status="home" />
       ) : (
         <div
           style={{ display: "block", visibility: "hidden" }}

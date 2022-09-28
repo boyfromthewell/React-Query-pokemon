@@ -3,8 +3,8 @@ import React from "react";
 import { useQuery } from "react-query";
 import { useLocation } from "react-router-dom";
 import Loading from "../components/common/Loading";
-import PokeInfoBox from "../components/PokeInfoBox";
 import { PokeInfo } from "../types";
+import PokeInfoBox from "../components/PokeInfoBox";
 
 function PokeDetail() {
   const location = useLocation();
@@ -13,15 +13,16 @@ function PokeDetail() {
     const { data } = await axios.get<PokeInfo>(API_URL);
     return data;
   };
-  const { data, isLoading } = useQuery<PokeInfo, Error>(
+  const { data, isFetching } = useQuery<PokeInfo, Error>(
     ["pokeDetail"],
     fetchDetail
   );
 
+  console.log(isFetching);
   return (
     <>
-      {isLoading ? (
-        <Loading />
+      {isFetching ? (
+        <Loading status="detail" />
       ) : (
         <PokeInfoBox
           mainImg={data?.sprites.other["official-artwork"].front_default!}
