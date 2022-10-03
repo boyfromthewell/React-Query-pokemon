@@ -2,9 +2,9 @@ import axios from "axios";
 import React from "react";
 import { useQuery } from "react-query";
 import { useLocation } from "react-router-dom";
-import Loading from "../components/common/Loading";
 import { PokeInfo } from "../types";
 import PokeInfoBox from "../components/PokeInfoBox";
+import Skeleton from "../components/common/Skeleton";
 
 function PokeDetail() {
   const location = useLocation();
@@ -22,7 +22,7 @@ function PokeDetail() {
   return (
     <>
       {isFetching ? (
-        <Loading status="detail" />
+        <Skeleton />
       ) : (
         <PokeInfoBox
           mainImg={data?.sprites.other["official-artwork"].front_default!}
